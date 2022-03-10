@@ -1,0 +1,33 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: configmapdemo
+  namespace: sooraj
+spec:
+  containers:
+  - name: demo
+    image: nginx
+    env:
+      - name: Aatmani_Solutions
+        valueFrom:
+          configMapKeyRef:
+            name: sooraj-configmap 
+            key: aatmani_namespace
+      - name: Machi
+        valueFrom:
+          configMapKeyRef:
+            name: sooraj-configmap
+            key: aatmani_properties_file_name
+    volumeMounts:
+    - name: config
+      mountPath: /test-ebs
+      readOnly: true
+  volumes:
+    - name: config
+      configMap:
+        name: sooraj-configmap
+        items:
+          - key: "aatmani.properties"
+            path: "aatmani.properties"
+          - key: "user-interface.properties"
+            path: "user-interface.properties"

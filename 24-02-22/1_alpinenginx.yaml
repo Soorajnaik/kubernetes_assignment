@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-448839
+  namespace: sooraj
+  labels:
+    app: nginx-448839
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nginx-448839
+  template:
+    metadata:
+      labels:
+        app: nginx-448839
+    spec:
+      containers:
+      - name: nginx-448839
+        image: nginx:alpine
+        ports:
+        - containerPort: 80

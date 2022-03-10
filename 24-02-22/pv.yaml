@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pvsooraj
+  namespace: sooraj
+  labels:
+    type: amazonEBS
+spec:
+  capacity:
+    storage: 10Gi
+  storageClassName: "gp2"
+  accessModes:
+    - ReadWriteOnce
+  awsElasticBlockStore:
+    volumeID: vol-04f75c2b9d771870c
+    fsType: ext4
